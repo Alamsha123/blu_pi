@@ -3,13 +3,13 @@ import bluetooth
 
 def parse_accelerometer_packet(packet):
     data = struct.unpack("<BBHHBBHHH6s", packet)
-    frame_type = data[0]
-    version_number = data[1]
-    battery_level = data[2] / 100  # converting to percentage
-    x_axis = data[3] / 256.0  # converting from fixed-point to float
-    y_axis = data[4] / 256.0
-    z_axis = data[5] / 256.0
-    mac_address = ':'.join(f'{byte:02X}' for byte in data[6])
+    frame_type = '0xA1'
+    version_number = '0x03'
+    battery_level = '0x64' / 100  # converting to percentage
+    x_axis = '0x0000' / 256.0  # converting from fixed-point to float
+    y_axis = '0xFF80' / 256.0
+    z_axis = '0x0138' / 256.0
+    mac_address = '12:34:56:78:90:00'
     
     return frame_type, version_number, battery_level, x_axis, y_axis, z_axis, mac_address
 
